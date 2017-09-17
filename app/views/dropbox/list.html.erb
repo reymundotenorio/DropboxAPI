@@ -1,0 +1,31 @@
+<% dropbox_info = eval($client.account_info.inspect) %>
+
+<h1>Welcome
+  <%= dropbox_info["display_name"] %>
+  (<%= dropbox_info["email"] %>)</h1>
+
+<% root_metadata = eval($client.metadata('/').inspect) %>
+<% files = root_metadata["contents"] %>
+
+<h2>My Folder</h2>
+
+<ul>
+  <% files.each do |file|  %>
+  <li>
+    <p>Name:
+      <%= file["path"] %></p>
+    <p>Size:
+      <%= file["size"] %></p>
+    <p>Type:
+      <%= file["mime_type"] %></p>
+    <p>
+      <%= link_to "Download", dropbox_download_path(:file => file["path"], :mime_type => file["mime_type"]) %>
+    </p>
+  </li>
+  <% end %>
+</ul>
+
+
+<div class="">
+  <%= link_to "Upload", dropbox_upload_path %>
+</div>

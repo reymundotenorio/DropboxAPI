@@ -10,6 +10,22 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require bootstrap
  *= require_tree .
  *= require_self
  */
+
+p {
+  word-wrap: break-word;
+}
+
+ul{
+  list-style: none;
+}
+
+
+.divider{
+  width: 100%;
+  border: 1px solid grey;
+  margin: 10px 0px;
+}
